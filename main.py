@@ -1,5 +1,7 @@
 from Builder.BurgerBuilder import BurgerBuilder
 from Factory.BurgerFactory import BurgerFactory
+from Observer.BroadcastChannel import BroadcastChannel
+from Observer.BroadcastSubscriber import BroadcastSubscriber
 from Singleton.ApplicationState import ApplicationState
 
 
@@ -26,8 +28,17 @@ def singleton():
     print(app_state2)
 
 
+def observer():
+    channel = BroadcastChannel("FM 101.1")
+    channel.subscribe(BroadcastSubscriber("user1"))
+    channel.subscribe(BroadcastSubscriber("user2"))
+    channel.subscribe(BroadcastSubscriber("user3"))
+    channel.notify("New song have released")
+
+
 # Design pattern test
 if __name__ == '__main__':
     factory()
     builder()
     singleton()
+    observer()
