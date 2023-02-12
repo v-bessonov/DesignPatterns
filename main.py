@@ -3,6 +3,7 @@ from Adapter.MicroUsbCable import MicroUsbCable
 from Adapter.UsbCable import UsbCable
 from Adapter.UsbPort import UsbPort
 from Builder.BurgerBuilder import BurgerBuilder
+from Facade.Array import Array
 from Factory.BurgerFactory import BurgerFactory
 from Iterator.LinkedList import LinkedList
 from Iterator.ListNode import ListNode
@@ -72,6 +73,15 @@ def adapter():
     usb_port2.plug_usb(micro_to_usb_adapter)
 
 
+def facade():
+    array = Array()
+    array.push_back(10)
+    array.push_back(20)
+    print(f'length: {array.length}; capacity: {array.capacity}')
+    array.push_back(30)
+    print(f'length: {array.length}; capacity: {array.capacity}')
+
+
 # Design pattern test
 if __name__ == '__main__':
     factory()
@@ -81,3 +91,4 @@ if __name__ == '__main__':
     iterator()
     strategy()
     adapter()
+    facade()
