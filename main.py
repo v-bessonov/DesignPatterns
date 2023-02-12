@@ -1,3 +1,7 @@
+from Adapter.MicroToUsbAdapter import MicroToUsbAdapter
+from Adapter.MicroUsbCable import MicroUsbCable
+from Adapter.UsbCable import UsbCable
+from Adapter.UsbPort import UsbPort
 from Builder.BurgerBuilder import BurgerBuilder
 from Factory.BurgerFactory import BurgerFactory
 from Iterator.LinkedList import LinkedList
@@ -58,6 +62,16 @@ def strategy():
     print(values.filter(RemoveOddStrategy()))
 
 
+def adapter():
+    usb_cable = UsbCable()
+    usb_port1 = UsbPort()
+    usb_port1.plug_usb(usb_cable)
+
+    micro_to_usb_adapter = MicroToUsbAdapter(MicroUsbCable())
+    usb_port2 = UsbPort()
+    usb_port2.plug_usb(micro_to_usb_adapter)
+
+
 # Design pattern test
 if __name__ == '__main__':
     factory()
@@ -66,3 +80,4 @@ if __name__ == '__main__':
     observer()
     iterator()
     strategy()
+    adapter()
